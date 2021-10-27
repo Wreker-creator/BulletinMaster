@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/gradient_background"
+    android:padding="10dp"
+    tools:context=".ui.SavedNewsFragment">
+
+    <RelativeLayout
+        android:id="@+id/SavedFragmentHeading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/alegreya_sc"
+            android:text="SAVED"
+            android:textColor="@color/white"
+            android:textSize="30sp" />
+
+        <ImageButton
+            android:id="@+id/BackToMain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/curved_button"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/ic_baseline_chevron_left_24" />
+
+        <ImageButton
+            android:id="@+id/DeleteAllSavedArticles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/ic_baseline_delete_24"
+            android:backgroundTint="@color/white" />
+
+    </RelativeLayout>
+
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/SearchCardViewSavedFragment"
+        android:layout_below="@+id/SavedFragmentHeading"
+        android:layout_margin="10dp"
+        app:cardElevation="15dp"
+        app:cardCornerRadius="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/SearchEditTextLinearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/Search_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#423131"
+                android:drawableStart="@drawable/ic_baseline_search_24"
+                android:drawablePadding="5dp"
+                android:hint="Search - "
+                android:imeOptions="actionGo"
+                android:inputType="text"
+                android:maxLines="1"
+                android:padding="13dp"
+                android:textColor="@color/white"
+                android:textColorHint="#767575" />
+
+            <ImageButton
+                android:id="@+id/ClearEditTextSaved"
+                android:visibility="invisible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="7dp"
+                android:background="@drawable/clear" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/SavedFragmentRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/SearchCardViewSavedFragment"
+        tools:listitem="@layout/saved_layout" />
+
+</RelativeLayout>

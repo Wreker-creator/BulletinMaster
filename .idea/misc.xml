@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Bulletin/app/src/main/res/drawable-v24/background_date_news_layout.xml" value="0.1" />
+        <entry key="..\:/Bulletin/app/src/main/res/drawable-v24/background_white.xml" value="0.1" />
+        <entry key="..\:/Bulletin/app/src/main/res/drawable-v24/bookmark_add.xml" value="0.1" />
+        <entry key="..\:/Bulletin/app/src/main/res/drawable-v24/bookmark_filled.xml" value="0.1" />
+        <entry key="..\:/Bulletin/app/src/main/res/drawable-v24/clear.xml" value="0.1" />
+        <entry key="..\:/Bulletin/app/src/main/res/drawable-v24/curved_button.xml" value="0.1" />
+        <entry key="..\:/Bulletin/app/src/main/res/drawable-v24/curved_loading.xml" value="0.1" />
+        <entry key="..\:/Bulletin/app/src/main/res/drawable-v24/curved_top.xml" value="0.1" />
+        <entry key="..\:/Bulletin/app/src/main/res/drawable-v24/delete.xml" value="0.1" />
+        <entry key="..\:/Bulletin/app/src/main/res/drawable-v24/gradient.xml" value="0.1" />
+        <entry key="..\:/Bulletin/app/src/main/res/drawable-v24/gradient_background.xml" value="0.1" />
+        <entry key="..\:/Bulletin/app/src/main/res/drawable-v24/ic_baseline_bookmark_border_24.xml" value="0.1" />
+        <entry key="..\:/Bulletin/app/src/main/res/drawable-v24/ic_baseline_calendar_today_24.xml" value="0.14722222222222223" />
+        <entry key="..\:/Bulletin/app/src/main/res/drawable-v24/ic_baseline_chevron_left_24.xml" value="0.14722222222222223" />
+        <entry key="..\:/Bulletin/app/src/main/res/drawable-v24/ic_baseline_search_24.xml" value="0.1" />
+        <entry key="..\:/Bulletin/app/src/main/res/drawable-v24/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/Bulletin/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="..\:/Bulletin/app/src/main/res/drawable-v24/left.xml" value="0.1" />
+        <entry key="..\:/Bulletin/app/src/main/res/drawable-v24/more.xml" value="0.1" />
+        <entry key="..\:/Bulletin/app/src/main/res/font/.xml" value="0.1" />
+        <entry key="..\:/Bulletin/app/src/main/res/font/ewert.xml" value="0.1" />
+        <entry key="..\:/Bulletin/app/src/main/res/layout/activity_main.xml" value="0.253125" />
+        <entry key="..\:/Bulletin/app/src/main/res/layout/fragment_article_web_view.xml" value="0.26157407407407407" />
+        <entry key="..\:/Bulletin/app/src/main/res/layout/fragment_breaking_news.xml" value="0.136" />
+        <entry key="..\:/Bulletin/app/src/main/res/layout/fragment_saved_news.xml" value="0.1" />
+        <entry key="..\:/Bulletin/app/src/main/res/layout/fragment_search_news.xml" value="0.152" />
+        <entry key="..\:/Bulletin/app/src/main/res/layout/news_layout.xml" value="0.2" />
+        <entry key="..\:/Bulletin/app/src/main/res/layout/saved_layout.xml" value="0.20471014492753623" />
+        <entry key="..\:/Bulletin/app/src/main/res/layout/select_topic.xml" value="0.264" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

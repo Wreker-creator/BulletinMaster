@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/breakingNewsFragment">
+
+    <fragment
+        android:id="@+id/breakingNewsFragment"
+        android:name="com.example.bulletin.ui.BreakingNewsFragment"
+        android:label="fragment_breaking_news"
+        tools:layout="@layout/fragment_breaking_news" >
+        <action
+            android:id="@+id/action_breakingNewsFragment_to_searchNewsFragment"
+            app:destination="@id/searchNewsFragment" />
+        <action
+            android:id="@+id/action_breakingNewsFragment_to_savedNewsFragment"
+            app:destination="@id/savedNewsFragment" />
+        <action
+            android:id="@+id/action_breakingNewsFragment_to_articleWebViewFragment"
+            app:destination="@id/articleWebViewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchNewsFragment"
+        android:name="com.example.bulletin.ui.SearchNewsFragment"
+        android:label="fragment_search_news"
+        tools:layout="@layout/fragment_search_news" >
+        <action
+            android:id="@+id/action_searchNewsFragment_to_articleWebViewFragment"
+            app:destination="@id/articleWebViewFragment" />
+        <action
+            android:id="@+id/action_searchNewsFragment_to_breakingNewsFragment"
+            app:destination="@id/breakingNewsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/savedNewsFragment"
+        android:name="com.example.bulletin.ui.SavedNewsFragment"
+        android:label="fragment_saved_news"
+        tools:layout="@layout/fragment_saved_news" >
+        <action
+            android:id="@+id/action_savedNewsFragment_to_articleWebViewFragment"
+            app:destination="@id/articleWebViewFragment" />
+        <action
+            android:id="@+id/action_savedNewsFragment_to_breakingNewsFragment"
+            app:destination="@id/breakingNewsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/articleWebViewFragment"
+        android:name="com.example.bulletin.ui.ArticleWebViewFragment"
+        android:label="fragment_article_web_view"
+        tools:layout="@layout/fragment_article_web_view" >
+        <argument
+            android:name="article"
+            app:argType="com.example.bulletin.model.Article" />
+    </fragment>
+</navigation>
