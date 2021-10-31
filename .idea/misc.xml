@@ -28,7 +28,12 @@
         <entry key="..\:/Bulletin/app/src/main/res/layout/fragment_article_web_view.xml" value="0.26157407407407407" />
         <entry key="..\:/Bulletin/app/src/main/res/layout/fragment_breaking_news.xml" value="0.136" />
         <entry key="..\:/Bulletin/app/src/main/res/layout/fragment_saved_news.xml" value="0.1" />
+        <entry key="..\:/Bulletin/app/src/main/res/layout/fragment_screen1.xml" value="0.2390625" />
+        <entry key="..\:/Bulletin/app/src/main/res/layout/fragment_screen2.xml" value="0.25416666666666665" />
+        <entry key="..\:/Bulletin/app/src/main/res/layout/fragment_screen3.xml" value="0.25416666666666665" />
         <entry key="..\:/Bulletin/app/src/main/res/layout/fragment_search_news.xml" value="0.152" />
+        <entry key="..\:/Bulletin/app/src/main/res/layout/fragment_splash.xml" value="0.1" />
+        <entry key="..\:/Bulletin/app/src/main/res/layout/fragment_view_pager.xml" value="0.24923076923076923" />
         <entry key="..\:/Bulletin/app/src/main/res/layout/news_layout.xml" value="0.2" />
         <entry key="..\:/Bulletin/app/src/main/res/layout/saved_layout.xml" value="0.20471014492753623" />
         <entry key="..\:/Bulletin/app/src/main/res/layout/select_topic.xml" value="0.264" />

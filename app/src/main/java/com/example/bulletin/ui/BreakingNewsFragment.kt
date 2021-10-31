@@ -101,21 +101,34 @@ class BreakingNewsFragment : Fragment() {
         recycler.layoutManager = LinearLayoutManager(activity)
         recycler.isNestedScrollingEnabled = false
 
+        viewModel.breakingNews.observe(viewLifecycleOwner, Observer { response ->
+            when(response){
+                is NewsResource.Success -> {
+                    hideProgressBar()
+                    response.data?.let { newsResponse ->
+                        breakingNewsAdapter.differ.submitList(newsResponse.articles.toList())
+                    }
+                }
+
+                is NewsResource.Error -> {
+                    hideProgressBar()
+                    response.message?.let { message ->
+                        Log.e(TAG, "Error -> $message")
+                    }
+                }
+
+                is NewsResource.Loading -> {
+                    showProgressBar()
+                }
+
+            }
+        })
+
         //we are calling our own custom function setOnItemClickListener here.
         //which takes an article and returns unit. So what we are doing here
         // is we take the article attach it to a bundle and then pass it along
         //with the navigation components which will then handle the transition for
         //us and carry the article with it to the article fragment
-        /*newsAdapter.setOnItemClickListener {
-            val bundle = Bundle().apply {
-                putSerializable("article", it)
-            }
-            findNavController().navigate(
-                R.id.action_breakingNewsFragment_to_articleFragment,
-                bundle
-            )
-        }*/
-
         breakingNewsAdapter.setOnItemClickListener {
             val bundle = Bundle().apply {
                 putSerializable("article", it)
@@ -123,7 +136,6 @@ class BreakingNewsFragment : Fragment() {
             findNavController().navigate(R.id.action_breakingNewsFragment_to_articleWebViewFragment, bundle)
         }
 
-        lifecycleObserver()
 
         moreOptions.setOnClickListener {
             onClick()
@@ -187,32 +199,6 @@ class BreakingNewsFragment : Fragment() {
             toSearch.isClickable = false
             toSaved.isClickable = false
         }
-    }
-
-    private fun lifecycleObserver(){
-        //lifecycle Observer
-        viewModel.breakingNews.observe(viewLifecycleOwner, Observer { response ->
-            when(response){
-                is NewsResource.Success -> {
-                    hideProgressBar()
-                    response.data?.let { newsResponse ->
-                        breakingNewsAdapter.differ.submitList(newsResponse.articles.toList())
-                    }
-                }
-
-                is NewsResource.Error -> {
-                    hideProgressBar()
-                    response.message?.let { message ->
-                        Log.e(TAG, "Error -> $message")
-                    }
-                }
-
-                is NewsResource.Loading -> {
-                    showProgressBar()
-                }
-
-            }
-        })
     }
 
 }
