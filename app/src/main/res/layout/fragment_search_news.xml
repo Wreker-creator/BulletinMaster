@@ -48,6 +48,7 @@
         android:layout_below="@+id/SearchFragmentHeading"
         android:layout_margin="10dp"
         app:cardElevation="15dp"
+        android:backgroundTint="#423131"
         app:cardCornerRadius="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

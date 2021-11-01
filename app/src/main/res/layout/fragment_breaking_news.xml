@@ -101,7 +101,6 @@
                     android:layout_below="@+id/BreakingNewsTopicRecyclerView"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
-
                     android:fontFamily="@font/ewert"
                     android:text="Top - News"
                     android:textColor="@color/white"
@@ -133,7 +132,7 @@
             android:src="@drawable/curved_loading" />
 
         <com.github.ybq.android.spinkit.SpinKitView
-            style="@style/SpinKitView.Wave"
+            style="@style/SpinKitView.Large.WanderingCubes"
             android:layout_centerInParent="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -3,6 +3,7 @@ package com.example.bulletin.repository
 import com.example.bulletin.api.RetrofitInstance
 import com.example.bulletin.database.ArticleDatabase
 import com.example.bulletin.model.Article
+import com.example.bulletin.util.Constants.Companion.ApiKey
 import retrofit2.Retrofit
 import retrofit2.http.Query
 
@@ -14,8 +15,8 @@ class NewsRepository(val db : ArticleDatabase) {
     //Because the function getTopNews is a suspend fun so we make this function
     // a suspend function as well
 
-    suspend fun getBreakingNews(country : String, pageNumber : Int) =
-        RetrofitInstance.apiCall.getTopNews(country, pageNumber)
+    suspend fun getBreakingNews(country : String, pageNumber : Int, category : String) =
+        RetrofitInstance.apiCall.getTopNews(country, pageNumber, ApiKey, category)
 
     suspend fun searchNews(query: String, pageNumber: Int) =
         RetrofitInstance.apiCall.searchNews(query, pageNumber)

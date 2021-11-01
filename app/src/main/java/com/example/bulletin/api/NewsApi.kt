@@ -18,7 +18,9 @@ interface NewsApi {
         @Query("page")
         page : Int = 1,
         @Query("apiKey")
-        apiKey : String = ApiKey
+        apiKey : String = ApiKey,
+        @Query("category")
+        category : String = "general"
     ) : Response<NewsResponse>
 
     @GET("everything")

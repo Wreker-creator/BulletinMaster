@@ -6,9 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AbsListView
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.RelativeLayout
+import androidx.activity.OnBackPressedCallback
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -17,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.bulletin.MainActivity
 import com.example.bulletin.R
 import com.example.bulletin.adapters.ArticleAdapter
+import com.example.bulletin.util.Constants.Companion.QUERY_PAGE_SIZE
 import com.example.bulletin.util.Constants.Companion.SEARCH_NEWS_TIME_DELAY
 import com.example.bulletin.util.NewsResource
 import com.example.bulletin.viewModel.NewsViewModel
@@ -41,11 +44,17 @@ class SearchNewsFragment : Fragment() {
     ): View? {
         val view =  inflater.inflate(R.layout.fragment_search_news, container, false)
 
+        activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                activity?.onBackPressed()
+            }
+        })
+
         searchViewModel = (activity as MainActivity).viewModel1
 
         //GO  BACK TO MAIN FRAGMENT
         view.findViewById<ImageButton>(R.id.SearchToMain).setOnClickListener {
-            findNavController().navigate(R.id.action_searchNewsFragment_to_breakingNewsFragment)
+            activity
         }
 
         //recycler view
@@ -65,6 +74,8 @@ class SearchNewsFragment : Fragment() {
                 clear.visibility = View.GONE
             }
             job?.cancel()
+            searchViewModel.searchNewsResponse = null
+            searchViewModel.searchNewsPage = 1
             job = MainScope().launch {
                 clear.setOnClickListener {
                     search.setText("")
@@ -97,7 +108,9 @@ class SearchNewsFragment : Fragment() {
                 is NewsResource.Success -> {
                     hideProgressBar()
                     response.data?.let { newsResponse ->
-                        searchAdapter.differ.submitList(newsResponse.articles)
+                        searchAdapter.differ.submitList(newsResponse.articles.toList())
+                        val totalPages = newsResponse.totalResults / QUERY_PAGE_SIZE + 2
+                        isLAstPage = searchViewModel.searchNewsPage == totalPages
                     }
                 }
 
@@ -115,15 +128,54 @@ class SearchNewsFragment : Fragment() {
             }
         })
 
+        //add on Scroll Listener
+        searchRecycler.addOnScrollListener(this@SearchNewsFragment.scrollListener)
+
         return view
     }
 
     private fun hideProgressBar() {
         view?.findViewById<RelativeLayout>(R.id.SearchProgress)?.visibility = View.GONE
+        isLoading = false
     }
 
     private fun showProgressBar() {
         view?.findViewById<RelativeLayout>(R.id.SearchProgress)?.visibility = View.VISIBLE
+        isLoading = true
+    }
+
+    var isLoading = false
+    var isLAstPage = false
+    var isScrolling = false
+
+    val scrollListener = object : RecyclerView.OnScrollListener(){
+        override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+            super.onScrollStateChanged(recyclerView, newState)
+            if(newState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL){
+                isScrolling = true
+            }
+        }
+
+        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+            super.onScrolled(recyclerView, dx, dy)
+
+            val layoutManager = recyclerView.layoutManager as LinearLayoutManager
+            val firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition()
+            val visibleItemCount = layoutManager.childCount
+            val totalItemCount = layoutManager.itemCount
+
+            val isNotLoadingAndNotLastPage : Boolean = !isLoading && !isLAstPage
+            val isAtLastItem : Boolean = firstVisibleItemPosition + visibleItemCount >= totalItemCount
+            val isNotAtBeginning : Boolean = firstVisibleItemPosition >= 0
+            val isTotalMoreThanVisible : Boolean = totalItemCount >= QUERY_PAGE_SIZE
+            val shouldPaginate = isNotLoadingAndNotLastPage && isAtLastItem && isNotAtBeginning
+                    && isTotalMoreThanVisible && isScrolling
+
+            if(shouldPaginate){
+                searchViewModel.searchNews(view?.findViewById<EditText>(R.id.SearchEditText)?.text.toString())
+            }
+
+        }
     }
 
 }

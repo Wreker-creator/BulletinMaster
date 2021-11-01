@@ -17,7 +17,7 @@ class Constants {
 
     object Arrays{
         val imageUrl = arrayOf(R.drawable.business_trial, R.drawable.entertainment_industry, R.drawable.news_industry, R.drawable.health, R.drawable.science, R.drawable.sports, R.drawable.technology)
-        val title = arrayOf("BUSINESS", "ENTERTAINMENT", "TOP-NEWS", "HEALTH", "SCIENCE", "SPORTS", "TECHNOLOGY")
+        val title = arrayOf("BUSINESS", "ENTERTAINMENT", "GENERAL", "HEALTH", "SCIENCE", "SPORTS", "TECHNOLOGY")
     }
 
 }

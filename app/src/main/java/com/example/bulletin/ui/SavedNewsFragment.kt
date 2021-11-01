@@ -115,7 +115,7 @@ class SavedNewsFragment : Fragment() {
 
         //Go back to main fragment
         view.findViewById<ImageButton>(R.id.BackToMain).setOnClickListener {
-            findNavController().navigate(R.id.action_savedNewsFragment_to_breakingNewsFragment)
+            activity?.onBackPressed()
         }
 
         return view

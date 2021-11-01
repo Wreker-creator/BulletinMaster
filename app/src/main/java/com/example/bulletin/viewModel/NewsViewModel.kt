@@ -1,6 +1,6 @@
 package com.example.bulletin.viewModel
 
-import androidx.lifecycle.LiveData
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -31,13 +31,14 @@ class NewsViewModel(private val newsRepository: NewsRepository ) : ViewModel(){
     //remains so to avoid that we are declaring which NewsPage we are currently on here.
 
     var breakingNewsPage = 1
+    var maxPage = 4
 
     val searchNews : MutableLiveData<NewsResource<NewsResponse>> = MutableLiveData()
     var searchNewsResponse : NewsResponse?=null
     var searchNewsPage = 1
 
     init {
-        getBreakingNews("in")
+        getBreakingNews("in", "general")
     }
 
     fun searchNews(query : String) = viewModelScope.launch {
@@ -49,25 +50,47 @@ class NewsViewModel(private val newsRepository: NewsRepository ) : ViewModel(){
     private fun handleSearchNewsResponse(response: Response<NewsResponse>) : NewsResource<NewsResponse>{
        if(response.isSuccessful){
            response.body()?.let { resultResponse ->
-               return NewsResource.Success(resultResponse)
+               searchNewsPage++
+               if(searchNewsResponse == null){
+                   searchNewsResponse = resultResponse
+               }else{
+                   val oldArticles = searchNewsResponse?.articles
+                   val newArticles = resultResponse.articles
+                   oldArticles?.addAll(newArticles)
+               }
+               return NewsResource.Success(searchNewsResponse?:resultResponse)
            }
        }
         return NewsResource.Error(response.message())
     }
 
-    fun getBreakingNews(countryCode : String) = viewModelScope.launch {
+     fun getBreakingNews(countryCode : String, category : String) = viewModelScope.launch {
         breakingNews.postValue(NewsResource.Loading())
-        val response = newsRepository.getBreakingNews(countryCode, breakingNewsPage)
-        breakingNews.postValue(handleBreakingNewsReponse(response))
+        val response = newsRepository.getBreakingNews(countryCode, breakingNewsPage, category)
+        breakingNews.postValue(handleBreakingNewsResponse(response))
     }
 
-    private fun handleBreakingNewsReponse(response: Response<NewsResponse>) : NewsResource<NewsResponse>{
+    private fun handleBreakingNewsResponse(response : Response<NewsResponse>) : NewsResource<NewsResponse> {
+
         if(response.isSuccessful){
             response.body()?.let { resultResponse ->
-                return NewsResource.Success(resultResponse)
+                breakingNewsPage++
+                if(breakingNewsPage > maxPage){
+                    breakingNewsPage = 1
+                }
+                if(breakingNewsResponse == null){
+                    breakingNewsResponse = resultResponse
+                }else{
+                    val oldArticles = breakingNewsResponse?.articles
+                    val newArticles = resultResponse.articles
+                    oldArticles?.addAll(newArticles)
+                }
+                return NewsResource.Success(breakingNewsResponse?:resultResponse)
             }
         }
+
         return NewsResource.Error(response.message())
+
     }
 
 

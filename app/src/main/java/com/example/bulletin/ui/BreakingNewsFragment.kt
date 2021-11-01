@@ -73,6 +73,8 @@ class BreakingNewsFragment : Fragment() {
     //Tag
     private val TAG = "BreakingNewsFragment"
 
+    private var category : String = "general"
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -80,12 +82,15 @@ class BreakingNewsFragment : Fragment() {
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragment_breaking_news, container, false)
 
+
         viewModel = (activity as MainActivity).viewModel1
+
 
         //Initialize Floating Action Buttons
         moreOptions = view.findViewById(R.id.MoreOption)
         toSearch = view.findViewById(R.id.SearchActionButton)
         toSaved = view.findViewById(R.id.SavedActionButton)
+
 
         //topic recycler view
         recyclerTopic = view.findViewById(R.id.BreakingNewsTopicRecyclerView)
@@ -94,6 +99,7 @@ class BreakingNewsFragment : Fragment() {
         recyclerTopic.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
         recyclerTopic.isNestedScrollingEnabled = false
 
+
         //breaking News Recycler View
         recycler = view.findViewById(R.id.BreakingNewsArticleRecyclerView)
         breakingNewsAdapter = ArticleAdapter()
@@ -101,6 +107,21 @@ class BreakingNewsFragment : Fragment() {
         recycler.layoutManager = LinearLayoutManager(activity)
         recycler.isNestedScrollingEnabled = false
 
+
+        //Topic adapter click listener to call different topic news
+        topicAdapter.setOnTopicClickListener {
+            category = it.title.lowercase()
+            if(category == "general"){
+                viewModel.maxPage = 2
+            }else{
+                viewModel.maxPage = 4
+            }
+            viewModel.breakingNewsResponse = null
+            viewModel.getBreakingNews("in", category)
+        }
+
+
+        //lifecycle observer
         viewModel.breakingNews.observe(viewLifecycleOwner, Observer { response ->
             when(response){
                 is NewsResource.Success -> {
@@ -124,6 +145,7 @@ class BreakingNewsFragment : Fragment() {
             }
         })
 
+
         //we are calling our own custom function setOnItemClickListener here.
         //which takes an article and returns unit. So what we are doing here
         // is we take the article attach it to a bundle and then pass it along
@@ -141,26 +163,22 @@ class BreakingNewsFragment : Fragment() {
             onClick()
         }
 
+
         toSearch.setOnClickListener {
             findNavController().navigate(R.id.action_breakingNewsFragment_to_searchNewsFragment)
             onClick()
         }
+
 
         toSaved.setOnClickListener {
             findNavController().navigate(R.id.action_breakingNewsFragment_to_savedNewsFragment)
             onClick()
         }
 
+
         return view
     }
 
-    private fun hideProgressBar(){
-        view?.findViewById<RelativeLayout>(R.id.BreakingNewsLoading)?.visibility = View.GONE
-    }
-
-    private fun showProgressBar(){
-        view?.findViewById<RelativeLayout>(R.id.BreakingNewsLoading)?.visibility = View.VISIBLE
-    }
 
     private fun onClick() {
         setVisibility(click)
@@ -168,6 +186,7 @@ class BreakingNewsFragment : Fragment() {
         setClickable(click)
         click = !click
     }
+
 
     private fun setAnimation(clicked: Boolean) {
         if (!clicked) {
@@ -181,6 +200,7 @@ class BreakingNewsFragment : Fragment() {
         }
     }
 
+
     private fun setVisibility(clicked: Boolean) {
         if (!clicked) {
             toSaved.visibility = View.GONE
@@ -191,6 +211,7 @@ class BreakingNewsFragment : Fragment() {
         }
     }
 
+
     private fun setClickable(clicked: Boolean) {
         if (!clicked) {
             toSaved.isClickable = true
@@ -199,6 +220,16 @@ class BreakingNewsFragment : Fragment() {
             toSearch.isClickable = false
             toSaved.isClickable = false
         }
+    }
+
+
+    private fun hideProgressBar(){
+        view?.findViewById<RelativeLayout>(R.id.BreakingNewsLoading)?.visibility = View.GONE
+    }
+
+
+    private fun showProgressBar(){
+        view?.findViewById<RelativeLayout>(R.id.BreakingNewsLoading)?.visibility = View.VISIBLE
     }
 
 }

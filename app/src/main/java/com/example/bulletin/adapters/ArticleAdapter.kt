@@ -68,7 +68,7 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder>(){
             val dateAndTime = dateFormat.parse(article.publishedAt)
 
             findViewById<TextView>(R.id.CurrentArticleTime).text = SimpleDateFormat("hh:mm a", Locale.ENGLISH).format(dateAndTime)
-            findViewById<TextView>(R.id.CurrentArticleDate).text = SimpleDateFormat("dd LL yyyy", Locale.ENGLISH).format(dateAndTime)
+            findViewById<TextView>(R.id.CurrentArticleDate).text = SimpleDateFormat("dd LLL yyyy", Locale.ENGLISH).format(dateAndTime)
 
             val url = article.urlToImage
 
