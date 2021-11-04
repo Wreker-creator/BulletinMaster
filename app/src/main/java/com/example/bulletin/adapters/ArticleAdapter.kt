@@ -1,11 +1,15 @@
 package com.example.bulletin.adapters
 
+import android.content.Intent
 import android.graphics.drawable.Drawable
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -59,6 +63,19 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder>(){
         val article = differ.currentList[position]
 
         holder.itemView.apply {
+
+            setOnLongClickListener(View.OnLongClickListener { view: View? ->
+
+                val sendIntent: Intent = Intent().apply {
+                    action = Intent.ACTION_SEND
+                    putExtra(Intent.EXTRA_TEXT, "This is my text to send.")
+                    type = "text/plain"
+                }
+
+                val shareIntent = Intent.createChooser(sendIntent, null)
+                startActivity(context, shareIntent, Bundle.EMPTY)
+
+            true })
 
             findViewById<TextView>(R.id.CurrentArticleSource).text = article.source?.name
             findViewById<TextView>(R.id.CurrentArticleDescription).text = article.description

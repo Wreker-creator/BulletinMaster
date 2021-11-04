@@ -36,7 +36,7 @@ class SearchNewsFragment : Fragment() {
     private lateinit var searchRecycler : RecyclerView
     private lateinit var searchAdapter : ArticleAdapter
 
-    private var TAG = "SearchNewsFragment"
+    private var  TAG = "SearchNewsFragment"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,17 +44,11 @@ class SearchNewsFragment : Fragment() {
     ): View? {
         val view =  inflater.inflate(R.layout.fragment_search_news, container, false)
 
-        activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                activity?.onBackPressed()
-            }
-        })
-
         searchViewModel = (activity as MainActivity).viewModel1
 
         //GO  BACK TO MAIN FRAGMENT
         view.findViewById<ImageButton>(R.id.SearchToMain).setOnClickListener {
-            activity
+            activity?.onBackPressed()
         }
 
         //recycler view
@@ -148,7 +142,7 @@ class SearchNewsFragment : Fragment() {
     var isLAstPage = false
     var isScrolling = false
 
-    val scrollListener = object : RecyclerView.OnScrollListener(){
+     val scrollListener = object : RecyclerView.OnScrollListener(){
         override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
             super.onScrollStateChanged(recyclerView, newState)
             if(newState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL){

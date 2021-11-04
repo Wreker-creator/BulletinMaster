@@ -12,11 +12,13 @@
         <entry key="..\:/Bulletin/app/src/main/res/drawable-v24/curved_loading.xml" value="0.1" />
         <entry key="..\:/Bulletin/app/src/main/res/drawable-v24/curved_top.xml" value="0.1" />
         <entry key="..\:/Bulletin/app/src/main/res/drawable-v24/delete.xml" value="0.1" />
+        <entry key="..\:/Bulletin/app/src/main/res/drawable-v24/delete_white.xml" value="0.2638888888888889" />
         <entry key="..\:/Bulletin/app/src/main/res/drawable-v24/gradient.xml" value="0.1" />
         <entry key="..\:/Bulletin/app/src/main/res/drawable-v24/gradient_background.xml" value="0.1" />
         <entry key="..\:/Bulletin/app/src/main/res/drawable-v24/ic_baseline_bookmark_border_24.xml" value="0.1" />
         <entry key="..\:/Bulletin/app/src/main/res/drawable-v24/ic_baseline_calendar_today_24.xml" value="0.14722222222222223" />
         <entry key="..\:/Bulletin/app/src/main/res/drawable-v24/ic_baseline_chevron_left_24.xml" value="0.14722222222222223" />
+        <entry key="..\:/Bulletin/app/src/main/res/drawable-v24/ic_baseline_delete_24.xml" value="0.25462962962962965" />
         <entry key="..\:/Bulletin/app/src/main/res/drawable-v24/ic_baseline_search_24.xml" value="0.1" />
         <entry key="..\:/Bulletin/app/src/main/res/drawable-v24/ic_launcher_background.xml" value="0.1" />
         <entry key="..\:/Bulletin/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
@@ -28,12 +30,12 @@
         <entry key="..\:/Bulletin/app/src/main/res/layout/activity_main.xml" value="0.253125" />
         <entry key="..\:/Bulletin/app/src/main/res/layout/fragment_article_web_view.xml" value="0.26157407407407407" />
         <entry key="..\:/Bulletin/app/src/main/res/layout/fragment_breaking_news.xml" value="0.2" />
-        <entry key="..\:/Bulletin/app/src/main/res/layout/fragment_saved_news.xml" value="0.1" />
+        <entry key="..\:/Bulletin/app/src/main/res/layout/fragment_saved_news.xml" value="0.2" />
         <entry key="..\:/Bulletin/app/src/main/res/layout/fragment_screen1.xml" value="0.2390625" />
         <entry key="..\:/Bulletin/app/src/main/res/layout/fragment_screen2.xml" value="0.25416666666666665" />
         <entry key="..\:/Bulletin/app/src/main/res/layout/fragment_screen3.xml" value="0.25416666666666665" />
         <entry key="..\:/Bulletin/app/src/main/res/layout/fragment_search_news.xml" value="0.4304635761589404" />
-        <entry key="..\:/Bulletin/app/src/main/res/layout/fragment_splash.xml" value="0.1" />
+        <entry key="..\:/Bulletin/app/src/main/res/layout/fragment_splash.xml" value="0.152" />
         <entry key="..\:/Bulletin/app/src/main/res/layout/fragment_view_pager.xml" value="0.24923076923076923" />
         <entry key="..\:/Bulletin/app/src/main/res/layout/news_layout.xml" value="0.2" />
         <entry key="..\:/Bulletin/app/src/main/res/layout/saved_layout.xml" value="0.20471014492753623" />

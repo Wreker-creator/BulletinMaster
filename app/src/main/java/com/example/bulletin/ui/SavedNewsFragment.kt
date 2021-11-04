@@ -1,14 +1,15 @@
 package com.example.bulletin.ui
 
 import android.app.AlertDialog
+import android.graphics.Canvas
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,9 +17,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.bulletin.MainActivity
 import com.example.bulletin.R
 import com.example.bulletin.adapters.SavedAdapter
-import com.example.bulletin.model.Article
 import com.example.bulletin.viewModel.NewsViewModel
 import com.google.android.material.snackbar.Snackbar
+import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
 
 class SavedNewsFragment : Fragment() {
 
@@ -84,6 +85,20 @@ class SavedNewsFragment : Fragment() {
                     }.show()
                 }
             }
+
+            override fun onChildDraw(c: Canvas, recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, dX: Float,
+                dY: Float, actionState: Int, isCurrentlyActive: Boolean
+            ) {
+
+                RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
+                    .addBackgroundColor(ContextCompat.getColor(activity as MainActivity, R.color.red))
+                    .addActionIcon(R.drawable.delete_white)
+                    .create()
+                    .decorate();
+
+                super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
+            }
+
         }
 
         //ItemTouchHelper Call

@@ -9,5 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="button_background">#272727</color>
     <color name="yellow">#FFD500</color>
-
+    <color name="red">#B60000</color>
 </resources>

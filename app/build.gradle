@@ -96,4 +96,8 @@ dependencies {
 
     // Pretty Time
     implementation 'org.ocpsoft.prettytime:prettytime:4.0.4.Final'
+
+    //recycler swipe
+    implementation 'com.github.xabaras:RecyclerViewSwipeDecorator:1.3'
+
 }

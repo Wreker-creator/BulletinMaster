@@ -12,13 +12,27 @@
         tools:layout="@layout/fragment_breaking_news" >
         <action
             android:id="@+id/action_breakingNewsFragment_to_searchNewsFragment"
-            app:destination="@id/searchNewsFragment" />
+            app:destination="@id/searchNewsFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@android:anim/fade_out"
+            app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_breakingNewsFragment_to_savedNewsFragment"
-            app:destination="@id/savedNewsFragment" />
+            app:destination="@id/savedNewsFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@android:anim/fade_out"
+            app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_breakingNewsFragment_to_articleWebViewFragment"
-            app:destination="@id/articleWebViewFragment" />
+            app:destination="@id/articleWebViewFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/searchNewsFragment"
@@ -27,11 +41,11 @@
         tools:layout="@layout/fragment_search_news" >
         <action
             android:id="@+id/action_searchNewsFragment_to_articleWebViewFragment"
-            app:destination="@id/articleWebViewFragment" />
-        <action
-            android:id="@+id/action_searchNewsFragment_to_breakingNewsFragment"
-            app:destination="@id/breakingNewsFragment"
-            app:popUpToInclusive="false" />
+            app:destination="@id/articleWebViewFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/savedNewsFragment"
@@ -40,11 +54,11 @@
         tools:layout="@layout/fragment_saved_news" >
         <action
             android:id="@+id/action_savedNewsFragment_to_articleWebViewFragment"
-            app:destination="@id/articleWebViewFragment" />
-        <action
-            android:id="@+id/action_savedNewsFragment_to_breakingNewsFragment"
-            app:destination="@id/breakingNewsFragment"
-            app:popUpToInclusive="false" />
+            app:destination="@id/articleWebViewFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/articleWebViewFragment"
@@ -63,11 +77,18 @@
         <action
             android:id="@+id/action_splashFragment_to_viewPager"
             app:destination="@id/viewPager"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@android:anim/fade_in"
             app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_splashFragment_to_breakingNewsFragment"
             app:destination="@id/breakingNewsFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
             app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -79,6 +100,10 @@
         <action
             android:id="@+id/action_viewPager_to_breakingNewsFragment"
             app:destination="@id/breakingNewsFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
             app:popUpTo="@id/viewPager"
             app:popUpToInclusive="true" />
     </fragment>
