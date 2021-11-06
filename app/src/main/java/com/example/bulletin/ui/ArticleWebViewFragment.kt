@@ -19,7 +19,6 @@ class ArticleWebViewFragment : Fragment() {
 
     lateinit var articleViewModel: NewsViewModel
     private val args : ArticleWebViewFragmentArgs by navArgs()
-    private lateinit var webView: WebView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

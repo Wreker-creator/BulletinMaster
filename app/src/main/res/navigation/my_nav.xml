@@ -15,7 +15,7 @@
             app:destination="@id/searchNewsFragment"
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popEnterAnim="@android:anim/fade_in"
             app:popExitAnim="@android:anim/fade_out"
             app:popUpToInclusive="false" />
         <action
@@ -23,7 +23,7 @@
             app:destination="@id/savedNewsFragment"
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popEnterAnim="@android:anim/fade_in"
             app:popExitAnim="@android:anim/fade_out"
             app:popUpToInclusive="false" />
         <action
@@ -53,12 +53,12 @@
         android:label="fragment_saved_news"
         tools:layout="@layout/fragment_saved_news" >
         <action
-            android:id="@+id/action_savedNewsFragment_to_articleWebViewFragment"
-            app:destination="@id/articleWebViewFragment"
+            android:id="@+id/action_savedNewsFragment_to_savedArticle"
+            app:destination="@id/savedArticle"
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/articleWebViewFragment"
@@ -106,5 +106,21 @@
             app:popExitAnim="@anim/nav_default_pop_exit_anim"
             app:popUpTo="@id/viewPager"
             app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/savedArticle"
+        android:name="com.example.bulletin.ui.SavedArticle"
+        android:label="fragment_saved_article"
+        tools:layout="@layout/fragment_saved_article" >
+        <action
+            android:id="@+id/action_savedArticle_to_articleWebViewFragment"
+            app:destination="@id/articleWebViewFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+        <argument
+            android:name="article_saved"
+            app:argType="com.example.bulletin.model.Article" />
     </fragment>
 </navigation>

@@ -64,19 +64,6 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder>(){
 
         holder.itemView.apply {
 
-            setOnLongClickListener(View.OnLongClickListener { view: View? ->
-
-                val sendIntent: Intent = Intent().apply {
-                    action = Intent.ACTION_SEND
-                    putExtra(Intent.EXTRA_TEXT, "This is my text to send.")
-                    type = "text/plain"
-                }
-
-                val shareIntent = Intent.createChooser(sendIntent, null)
-                startActivity(context, shareIntent, Bundle.EMPTY)
-
-            true })
-
             findViewById<TextView>(R.id.CurrentArticleSource).text = article.source?.name
             findViewById<TextView>(R.id.CurrentArticleDescription).text = article.description
             findViewById<TextView>(R.id.CurrentArticleTitle).text = article.title
@@ -84,7 +71,6 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder>(){
             val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.ENGLISH)
             val dateAndTime = dateFormat.parse(article.publishedAt)
 
-            findViewById<TextView>(R.id.CurrentArticleTime).text = SimpleDateFormat("hh:mm a", Locale.ENGLISH).format(dateAndTime)
             findViewById<TextView>(R.id.CurrentArticleDate).text = SimpleDateFormat("dd LLL yyyy", Locale.ENGLISH).format(dateAndTime)
 
             val url = article.urlToImage
@@ -125,6 +111,22 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder>(){
                 setOnClickListener {
                     onItemClickListener?.let { it(article) }
                 }
+
+                setOnLongClickListener(View.OnLongClickListener { view: View? ->
+
+                    val sendIntent: Intent = Intent().apply {
+                        action = Intent.ACTION_SEND
+                        putExtra(Intent.EXTRA_TITLE, article.title)
+                        putExtra(Intent.EXTRA_SUBJECT, article.source?.name)
+                        type = "text/plain"
+                        val body: String = article.title.toString() + "\n\n" + article.url + "\n\n" + "Download Bulletin For Daily Updates"
+                        putExtra(Intent.EXTRA_TEXT, body)
+                    }
+
+                    val shareIntent = Intent.createChooser(sendIntent, "Share with - ")
+                    startActivity(context, shareIntent, Bundle.EMPTY)
+
+                    true })
             }
         }
     }

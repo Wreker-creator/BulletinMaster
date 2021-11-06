@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.RelativeLayout
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -111,11 +112,6 @@ class BreakingNewsFragment : Fragment() {
         //Topic adapter click listener to call different topic news
         topicAdapter.setOnTopicClickListener {
             category = it.title.lowercase()
-            if(category == "general"){
-                viewModel.maxPage = 2
-            }else{
-                viewModel.maxPage = 4
-            }
             viewModel.breakingNewsResponse = null
             viewModel.getBreakingNews("in", category)
         }
@@ -134,7 +130,7 @@ class BreakingNewsFragment : Fragment() {
                 is NewsResource.Error -> {
                     hideProgressBar()
                     response.message?.let { message ->
-                        Log.e(TAG, "Error -> $message")
+                        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
                     }
                 }
 

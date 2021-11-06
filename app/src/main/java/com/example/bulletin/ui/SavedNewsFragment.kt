@@ -44,6 +44,7 @@ class SavedNewsFragment : Fragment() {
         savedAdapter = SavedAdapter()
         savedRecycler.adapter = savedAdapter
 
+
         //we are calling our own custom function setOnItemClickListener here.
         //which takes an article and returns unit. So what we are doing here
         // is we take the article attach it to a bundle and then pass it along
@@ -51,9 +52,9 @@ class SavedNewsFragment : Fragment() {
         //us and carry the article with it to the article fragment
         savedAdapter.setOnSavedItemClickListener {
             val bundle = Bundle().apply{
-                putSerializable("article", it)
+                putSerializable("article_saved", it)
             }
-            findNavController().navigate(R.id.action_savedNewsFragment_to_articleWebViewFragment, bundle)
+            findNavController().navigate(R.id.action_savedNewsFragment_to_savedArticle, bundle)
         }
 
         //It is a cool feature to be able to delete something from a list in an app
@@ -71,7 +72,7 @@ class SavedNewsFragment : Fragment() {
                 return true
             }
 
-            // here we are creating a snackbar which is a brother of toast message
+            // here we are creating a snackBar which is a brother of toast message
             //but there is a difference. here i can add any action such as undo
             //which when pressed will act as button and will do what its functionality
             //says in the code
@@ -94,7 +95,7 @@ class SavedNewsFragment : Fragment() {
                     .addBackgroundColor(ContextCompat.getColor(activity as MainActivity, R.color.red))
                     .addActionIcon(R.drawable.delete_white)
                     .create()
-                    .decorate();
+                    .decorate()
 
                 super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
             }
@@ -121,7 +122,7 @@ class SavedNewsFragment : Fragment() {
                 savedViewModel.deleteAllArticles()
                 Snackbar.make(view, "Successfully Deleted.", Snackbar.LENGTH_SHORT).show()
             }
-            builder.setNegativeButton("NO"){_, _->}
+            builder.setNegativeButton("NO"){_, _-> }
             builder.setTitle("Delete All Articles?")
             builder.setIcon(R.drawable.ic_baseline_delete_24)
             builder.setMessage("Are you sure you want to Delete all of the saved Articles?")
@@ -130,10 +131,14 @@ class SavedNewsFragment : Fragment() {
 
         //Go back to main fragment
         view.findViewById<ImageButton>(R.id.BackToMain).setOnClickListener {
-            activity?.onBackPressed()
+            goToMain()
         }
 
         return view
+    }
+
+    private fun goToMain(){
+        activity?.onBackPressed()
     }
 
 }

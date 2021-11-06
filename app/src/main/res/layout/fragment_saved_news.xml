@@ -47,7 +47,6 @@
     </RelativeLayout>
 
 
-
     <androidx.cardview.widget.CardView
         android:id="@+id/SearchCardViewSavedFragment"
         android:layout_below="@+id/SavedFragmentHeading"
@@ -98,5 +97,35 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/SearchCardViewSavedFragment"
         tools:listitem="@layout/saved_layout" />
+
+    <RelativeLayout
+        android:id="@+id/NoSavedNews"
+        android:visibility="visible"
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/Empty"
+            android:layout_width="300dp"
+            android:layout_height="400dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/empty" />
+
+        <Button
+            android:id="@+id/BelowEmptyButton"
+            android:layout_below="@+id/Empty"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/custom_button"
+            android:textColor="@color/white"
+            android:text="Explore News"
+            android:fontFamily="@font/ewert"
+            android:textSize="24sp"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"/>
+
+    </RelativeLayout>
 
 </RelativeLayout>

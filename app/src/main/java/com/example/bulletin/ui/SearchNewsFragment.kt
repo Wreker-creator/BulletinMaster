@@ -6,10 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AbsListView
-import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.RelativeLayout
+import android.widget.*
 import androidx.activity.OnBackPressedCallback
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
@@ -111,8 +108,7 @@ class SearchNewsFragment : Fragment() {
                 is NewsResource.Error -> {
                     hideProgressBar()
                     response.data?.let { message ->
-
-                        Log.e(TAG, "Error -> $message")
+                        Toast.makeText(activity, "$message", Toast.LENGTH_SHORT).show()
                     }
                 }
 

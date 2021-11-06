@@ -24,6 +24,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <ImageButton
+                    android:layout_alignParentEnd="true"
+                    android:layout_margin="10dp"
+                    android:background="@color/button_background"
+                    app:tint = "@color/white"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:src="@drawable/bookmark_add"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"/>
+
                 <ImageView
                     android:id="@+id/CurrentArticleImage"
                     android:layout_width="match_parent"
@@ -123,27 +134,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/CurrentArticleTitle"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart= "16dp"
                     android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
                     android:fontFamily="@font/belgrano"
                     android:textColor="@color/white"
                     android:textSize="11sp"
                     tools:text="lbllbjljb" />
-
-                <TextView
-                    android:id="@+id/CurrentArticleTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:layout_below="@+id/CurrentArticleDescription"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="16dp"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:textColor="@color/white"
-                    android:textSize="11sp"
-                    tools:text="Time" />
 
             </RelativeLayout>
 
