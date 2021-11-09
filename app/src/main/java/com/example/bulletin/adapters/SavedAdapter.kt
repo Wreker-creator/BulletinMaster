@@ -19,6 +19,7 @@ import com.example.bulletin.R
 import com.example.bulletin.model.Article
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 class SavedAdapter : RecyclerView.Adapter<SavedAdapter.SavedViewHolder>(){
 

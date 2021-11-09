@@ -47,7 +47,7 @@
     </RelativeLayout>
 
 
-    <androidx.cardview.widget.CardView
+    <!--<androidx.cardview.widget.CardView
         android:id="@+id/SearchCardViewSavedFragment"
         android:layout_below="@+id/SavedFragmentHeading"
         android:layout_margin="10dp"
@@ -89,18 +89,19 @@
 
         </RelativeLayout>
 
-    </androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/SavedFragmentRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/SearchCardViewSavedFragment"
+        android:layout_below="@+id/SavedFragmentHeading"
+        android:layout_marginTop="10dp"
         tools:listitem="@layout/saved_layout" />
 
     <RelativeLayout
         android:id="@+id/NoSavedNews"
-        android:visibility="visible"
+        android:visibility="gone"
         android:layout_centerInParent="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

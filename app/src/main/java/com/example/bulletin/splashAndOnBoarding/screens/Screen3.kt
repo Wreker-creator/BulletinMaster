@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.bulletin.R
+import org.w3c.dom.Text
 
 
 class Screen3 : Fragment() {
@@ -23,12 +24,16 @@ class Screen3 : Fragment() {
 
         val viewPager = activity?.findViewById<ViewPager2>(R.id.ViewPager)
 
-        view.findViewById<TextView>(R.id.NextScreen3).setOnClickListener {
+        view.findViewById<TextView>(R.id.NextScn3).setOnClickListener {
+            viewPager?.currentItem = 3
+        }
+
+        view.findViewById<TextView>(R.id.SkipScn3).setOnClickListener {
             findNavController().navigate(R.id.action_viewPager_to_breakingNewsFragment)
             onBoardingFinished()
         }
 
-        view.findViewById<TextView>(R.id.BackScreen3).setOnClickListener {
+        view.findViewById<TextView>(R.id.BackScn3).setOnClickListener {
             viewPager?.currentItem = 1
         }
 

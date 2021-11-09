@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.lifecycle.Observer
@@ -23,6 +24,7 @@ import com.example.bulletin.util.Constants
 import com.example.bulletin.util.NewsResource
 import com.example.bulletin.viewModel.NewsViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.snackbar.Snackbar
 
 class BreakingNewsFragment : Fragment() {
 
@@ -112,6 +114,7 @@ class BreakingNewsFragment : Fragment() {
         //Topic adapter click listener to call different topic news
         topicAdapter.setOnTopicClickListener {
             category = it.title.lowercase()
+            Snackbar.make(view, "Fetching News For Category :$category", Snackbar.LENGTH_SHORT).show()
             viewModel.breakingNewsResponse = null
             viewModel.getBreakingNews("in", category)
         }
@@ -131,15 +134,19 @@ class BreakingNewsFragment : Fragment() {
                     hideProgressBar()
                     response.message?.let { message ->
                         Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
+                        view.findViewById<ImageView>(R.id.No_internet).visibility = View.VISIBLE
+                        recycler.visibility = View.INVISIBLE
                     }
                 }
 
                 is NewsResource.Loading -> {
                     showProgressBar()
+                    recycler.visibility = View.VISIBLE
+                    view.findViewById<ImageView>(R.id.No_internet).visibility = View.INVISIBLE
                 }
-
             }
         })
+
 
 
         //we are calling our own custom function setOnItemClickListener here.

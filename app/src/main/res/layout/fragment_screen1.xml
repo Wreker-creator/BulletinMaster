@@ -3,21 +3,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/yellow"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/gradient_background_light"
     tools:context=".splashAndOnBoarding.screens.Screen1">
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="350dp"
+        android:layout_height="500dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/welcome" />
+
     <TextView
+        android:id="@+id/WELCOME"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="First Screen"
-        android:textColor="@color/black"
-        android:fontFamily="@font/ewert"
-        android:layout_centerInParent="true"
-        android:textSize="35sp"
+        android:text="WELCOME TO "
+        android:fontFamily="@font/belgrano"
+        android:textColor="@color/white"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/BULLETIN"
+        android:textSize="40sp"
         />
 
     <TextView
-        android:id="@+id/NextFirstScreen"
+        android:id="@+id/Scn1Desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="100dp"
+        android:fontFamily="@font/brawler"
+        android:text="Your personal News App."
+        android:textColor="@color/white"
+        android:textSize="28sp" />
+
+    <TextView
+        android:id="@+id/BULLETIN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="150dp"
+        android:fontFamily="@font/ewert"
+        android:text="@string/app_name"
+        android:textColor="@color/white"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/NextScn1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -30,11 +66,11 @@
         android:fontFamily="@font/ewert"
         android:text="Next"
         android:textSize="20sp"
-        android:textColor="@color/black" />
+        android:textColor="@color/white" />
 
 
     <TextView
-        android:id="@+id/SkipFirstScreen"
+        android:id="@+id/SkipScn1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -45,7 +81,7 @@
         android:backgroundTint="@color/yellow"
         android:fontFamily="@font/ewert"
         android:text="Skip"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="20sp" />
 
 </RelativeLayout>

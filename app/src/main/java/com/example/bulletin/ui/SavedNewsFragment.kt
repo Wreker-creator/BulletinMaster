@@ -3,12 +3,19 @@ package com.example.bulletin.ui
 import android.app.AlertDialog
 import android.graphics.Canvas
 import android.os.Bundle
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.RelativeLayout
 import androidx.core.content.ContextCompat
+import androidx.core.widget.addTextChangedListener
+import androidx.core.widget.doAfterTextChanged
+import androidx.core.widget.doBeforeTextChanged
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -17,9 +24,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.bulletin.MainActivity
 import com.example.bulletin.R
 import com.example.bulletin.adapters.SavedAdapter
+import com.example.bulletin.model.Article
 import com.example.bulletin.viewModel.NewsViewModel
 import com.google.android.material.snackbar.Snackbar
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
+import java.util.Locale.filter
 
 class SavedNewsFragment : Fragment() {
 
@@ -112,6 +121,11 @@ class SavedNewsFragment : Fragment() {
         //async list differ which then checks whether the article we are adding is different
         //or not and then decides whether it is added to the database or not
         savedViewModel.getSavedNews().observe(viewLifecycleOwner, Observer { articles ->
+            if(articles.isEmpty()){
+                view.findViewById<RelativeLayout>(R.id.NoSavedNews).visibility = View.VISIBLE
+            }else{
+                view.findViewById<RelativeLayout>(R.id.NoSavedNews).visibility = View.GONE
+            }
             savedAdapter.savedDiffer.submitList(articles)
         })
 
@@ -127,6 +141,10 @@ class SavedNewsFragment : Fragment() {
             builder.setIcon(R.drawable.ic_baseline_delete_24)
             builder.setMessage("Are you sure you want to Delete all of the saved Articles?")
             builder.create().show()
+        }
+
+        view.findViewById<Button>(R.id.BelowEmptyButton).setOnClickListener {
+            goToMain()
         }
 
         //Go back to main fragment

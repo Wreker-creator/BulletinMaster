@@ -11,6 +11,7 @@ import com.example.bulletin.R
 import com.example.bulletin.splashAndOnBoarding.screens.Screen1
 import com.example.bulletin.splashAndOnBoarding.screens.Screen2
 import com.example.bulletin.splashAndOnBoarding.screens.Screen3
+import com.example.bulletin.splashAndOnBoarding.screens.Screen4
 
 class ViewPager : Fragment() {
 
@@ -24,7 +25,8 @@ class ViewPager : Fragment() {
         val fragmentList = arrayListOf<Fragment>(
             Screen1(),
             Screen2(),
-            Screen3()
+            Screen3(),
+            Screen4()
         )
 
         val adapter = ViewPagerAdapter(fragmentList,

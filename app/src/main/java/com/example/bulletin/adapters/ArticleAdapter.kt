@@ -1,11 +1,13 @@
 package com.example.bulletin.adapters
 
+import android.app.Application
 import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
@@ -19,12 +21,19 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
+import com.example.bulletin.MainActivity
 import com.example.bulletin.R
+import com.example.bulletin.database.ArticleDatabase
 import com.example.bulletin.model.Article
+import com.example.bulletin.repository.NewsRepository
+import com.example.bulletin.viewModel.NewsViewModel
+import com.google.android.material.snackbar.Snackbar
 import java.text.SimpleDateFormat
 import java.util.*
 
 class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder>(){
+
+    private var clicked = false
 
     inner class ArticleViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView)
 
@@ -72,6 +81,14 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder>(){
             val dateAndTime = dateFormat.parse(article.publishedAt)
 
             findViewById<TextView>(R.id.CurrentArticleDate).text = SimpleDateFormat("dd LLL yyyy", Locale.ENGLISH).format(dateAndTime)
+            findViewById<ImageButton>(R.id.SaveArticleButton).setOnClickListener {
+                NewsViewModel(Application(), NewsRepository(ArticleDatabase.getDatabase(context))).saveArticle(article)
+                Snackbar.make(it, "Article Saved Successfully", Snackbar.LENGTH_LONG).apply {
+                    setAction("Undo"){
+                        NewsViewModel(Application(), NewsRepository(ArticleDatabase.getDatabase(context))).deleteArticle(article)
+                    }.show()
+                }
+            }
 
             val url = article.urlToImage
 

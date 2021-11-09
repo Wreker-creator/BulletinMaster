@@ -123,6 +123,16 @@
 
     </ScrollView>
 
+    <ImageView
+        android:id="@+id/No_internet"
+        android:src="@drawable/no_connection"
+        android:layout_width="300dp"
+        android:visibility="invisible"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="80dp"
+        android:layout_height="300dp"/>
+
     <RelativeLayout
         android:id="@+id/BreakingNewsLoading"
         android:layout_width="match_parent"

@@ -23,11 +23,11 @@ class Screen1 : Fragment() {
 
         val viewPager = activity?.findViewById<ViewPager2>(R.id.ViewPager)
 
-        view.findViewById<TextView>(R.id.NextFirstScreen).setOnClickListener {
+        view.findViewById<TextView>(R.id.NextScn1).setOnClickListener {
             viewPager?.currentItem = 1
         }
 
-        view.findViewById<TextView>(R.id.SkipFirstScreen).setOnClickListener {
+        view.findViewById<TextView>(R.id.SkipScn1).setOnClickListener {
             findNavController().navigate(R.id.action_viewPager_to_breakingNewsFragment)
             onBoardingFinished()
         }

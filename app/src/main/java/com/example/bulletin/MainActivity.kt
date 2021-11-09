@@ -20,5 +20,6 @@ class MainActivity : AppCompatActivity() {
         val viewModelProviderFactory = NewsViewModelFactory(application,newsRepository)
         viewModel1 = ViewModelProvider(this, viewModelProviderFactory).get(NewsViewModel::class.java)
 
+        //add caching
     }
 }

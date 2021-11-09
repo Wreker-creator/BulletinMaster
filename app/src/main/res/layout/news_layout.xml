@@ -24,17 +24,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <ImageButton
-                    android:layout_alignParentEnd="true"
-                    android:layout_margin="10dp"
-                    android:background="@color/button_background"
-                    app:tint = "@color/white"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:src="@drawable/bookmark_add"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"/>
-
                 <ImageView
                     android:id="@+id/CurrentArticleImage"
                     android:layout_width="match_parent"
@@ -79,8 +68,8 @@
             <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="-50dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="-40dp"
                 android:layout_below="@+id/ImageRelativeLayout"
                 android:layout_marginEnd="20dp"
                 android:padding="5dp"
@@ -143,6 +132,19 @@
                     tools:text="lbllbjljb" />
 
             </RelativeLayout>
+
+            <ImageButton
+                android:id="@+id/SaveArticleButton"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="10dp"
+                android:background="@drawable/curved_button"
+                android:backgroundTint="#806262"
+                app:tint = "@color/white"
+                android:clickable="true"
+                android:focusable="true"
+                android:src="@drawable/bookmark_add"
+                android:layout_width="35dp"
+                android:layout_height="35dp"/>
 
         </RelativeLayout>
 
