@@ -114,7 +114,7 @@ class BreakingNewsFragment : Fragment() {
         //Topic adapter click listener to call different topic news
         topicAdapter.setOnTopicClickListener {
             category = it.title.lowercase()
-            Snackbar.make(view, "Fetching News For Category :$category", Snackbar.LENGTH_SHORT).show()
+            Snackbar.make(view, "Fetching News For Category ${category.uppercase()}", Snackbar.LENGTH_SHORT).show()
             viewModel.breakingNewsResponse = null
             viewModel.getBreakingNews("in", category)
         }

@@ -93,6 +93,8 @@ class SearchNewsFragment : Fragment() {
             findNavController().navigate(R.id.action_searchNewsFragment_to_articleWebViewFragment, bundle)
         }
 
+        val searchImage = view.findViewById<ImageView>(R.id.SearchViewEmpty)
+
         //lifecycle observer
         searchViewModel.searchNews.observe(viewLifecycleOwner, Observer { response ->
             when(response){
@@ -102,6 +104,7 @@ class SearchNewsFragment : Fragment() {
                         searchAdapter.differ.submitList(newsResponse.articles.toList())
                         val totalPages = newsResponse.totalResults / QUERY_PAGE_SIZE + 2
                         isLAstPage = searchViewModel.searchNewsPage == totalPages
+                        searchImage.visibility = View.GONE
                     }
                 }
 
@@ -109,6 +112,7 @@ class SearchNewsFragment : Fragment() {
                     hideProgressBar()
                     response.data?.let { message ->
                         Toast.makeText(activity, "$message", Toast.LENGTH_SHORT).show()
+                        searchImage.visibility = View.VISIBLE
                     }
                 }
 
