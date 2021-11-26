@@ -91,7 +91,6 @@ class NewsViewModel(
         }
     }
 
-
      fun getBreakingNews(countryCode : String, category : String) = viewModelScope.launch {
         safeBreakingNewsCall(countryCode, category)
     }

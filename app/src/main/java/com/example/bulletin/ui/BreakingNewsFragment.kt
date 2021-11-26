@@ -10,6 +10,7 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.RelativeLayout
+import android.widget.ScrollView
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -135,6 +136,7 @@ class BreakingNewsFragment : Fragment() {
                     response.message?.let { message ->
                         Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
                         view.findViewById<ImageView>(R.id.No_internet).visibility = View.VISIBLE
+                        view.findViewById<ScrollView>(R.id.ScrollView).offsetTopAndBottom(1)
                         recycler.visibility = View.INVISIBLE
                     }
                 }

@@ -78,6 +78,7 @@
         android:backgroundTint="#D22D2D2D"/>
 
     <ScrollView
+        android:id="@+id/ScrollView"
         android:layout_below="@+id/TitleRelativeLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -130,7 +131,7 @@
         android:visibility="invisible"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="50dp"
         android:layout_height="300dp"/>
 
     <RelativeLayout
