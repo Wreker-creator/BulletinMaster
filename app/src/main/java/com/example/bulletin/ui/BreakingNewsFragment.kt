@@ -136,8 +136,7 @@ class BreakingNewsFragment : Fragment() {
                     response.message?.let { message ->
                         Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
                         view.findViewById<ImageView>(R.id.No_internet).visibility = View.VISIBLE
-                        view.findViewById<ScrollView>(R.id.ScrollView).offsetTopAndBottom(1)
-                        recycler.visibility = View.INVISIBLE
+                        recycler.visibility = View.GONE
                     }
                 }
 

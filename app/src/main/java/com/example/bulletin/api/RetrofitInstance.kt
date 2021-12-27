@@ -17,6 +17,10 @@ import kotlin.math.log
 
 //Then we create a client using that interceptor and pass it to retrofit
 
+//per class there is only one companion object allowed
+//they act as static keywords but with a twist
+//we use them for their static properties
+
 class RetrofitInstance {
 
     companion object{

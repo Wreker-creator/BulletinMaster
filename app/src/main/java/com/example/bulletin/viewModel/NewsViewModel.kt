@@ -21,15 +21,6 @@ import kotlinx.coroutines.launch
 import retrofit2.Response
 import java.io.IOException
 
-//We cant use constructor parameters by default for our own viewModel
-//If we want to do that then we need to create our own viewModelProviderFactory
-//to define how our viewModel should be created
-
-//Since we are passing NewsRepository as a parameter here which is a constructor then we
-//also need to pass it as parameter in the viewModelProviderFactory
-//and then return the newsViewModel with newsRepository casted as T
-
-
 class NewsViewModel(
     app : Application,
     private val newsRepository: NewsRepository
@@ -51,44 +42,6 @@ class NewsViewModel(
 
     init {
         getBreakingNews("in", "general")
-    }
-
-    fun searchNews(query : String) = viewModelScope.launch {
-        safeSearchNewsCall(query)
-    }
-
-    private fun handleSearchNewsResponse(response: Response<NewsResponse>) : NewsResource<NewsResponse>{
-       if(response.isSuccessful){
-           response.body()?.let { resultResponse ->
-               searchNewsPage++
-               if(searchNewsResponse == null){
-                   searchNewsResponse = resultResponse
-               }else{
-                   val oldArticles = searchNewsResponse?.articles
-                   val newArticles = resultResponse.articles
-                   oldArticles?.addAll(newArticles)
-               }
-               return NewsResource.Success(searchNewsResponse?:resultResponse)
-           }
-       }
-        return NewsResource.Error(response.message())
-    }
-
-    private suspend fun safeSearchNewsCall(query: String){
-        searchNews.postValue(NewsResource.Loading())
-        try{
-            if(hasInternetFunction()){
-                val response = newsRepository.searchNews(query, searchNewsPage)
-                searchNews.postValue(handleSearchNewsResponse(response))
-            }else{
-                searchNews.postValue(NewsResource.Error("No Internet Connection"))
-            }
-        }catch(t : Throwable){
-            when(t){
-                is IOException -> searchNews.postValue(NewsResource.Error("Network Failure"))
-                else -> searchNews.postValue(NewsResource.Error("Conversion Error"))
-            }
-        }
     }
 
      fun getBreakingNews(countryCode : String, category : String) = viewModelScope.launch {
@@ -131,6 +84,44 @@ class NewsViewModel(
             when(t){
                 is IOException -> breakingNews.postValue(NewsResource.Error("Network Failure"))
                 else -> breakingNews.postValue(NewsResource.Error("Conversion Error"))
+            }
+        }
+    }
+
+    fun searchNews(query : String) = viewModelScope.launch {
+        safeSearchNewsCall(query)
+    }
+
+    private fun handleSearchNewsResponse(response: Response<NewsResponse>) : NewsResource<NewsResponse>{
+        if(response.isSuccessful){
+            response.body()?.let { resultResponse ->
+                searchNewsPage++
+                if(searchNewsResponse == null){
+                    searchNewsResponse = resultResponse
+                }else{
+                    val oldArticles = searchNewsResponse?.articles
+                    val newArticles = resultResponse.articles
+                    oldArticles?.addAll(newArticles)
+                }
+                return NewsResource.Success(searchNewsResponse?:resultResponse)
+            }
+        }
+        return NewsResource.Error(response.message())
+    }
+
+    private suspend fun safeSearchNewsCall(query: String){
+        searchNews.postValue(NewsResource.Loading())
+        try{
+            if(hasInternetFunction()){
+                val response = newsRepository.searchNews(query, searchNewsPage)
+                searchNews.postValue(handleSearchNewsResponse(response))
+            }else{
+                searchNews.postValue(NewsResource.Error("No Internet Connection"))
+            }
+        }catch(t : Throwable){
+            when(t){
+                is IOException -> searchNews.postValue(NewsResource.Error("Network Failure"))
+                else -> searchNews.postValue(NewsResource.Error("Conversion Error"))
             }
         }
     }
