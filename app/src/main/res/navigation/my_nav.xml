@@ -123,5 +123,8 @@
         <argument
             android:name="article_saved"
             app:argType="com.example.bulletin.model.Article" />
+        <action
+            android:id="@+id/action_savedArticle_to_savedNewsFragment"
+            app:destination="@id/savedNewsFragment" />
     </fragment>
 </navigation>

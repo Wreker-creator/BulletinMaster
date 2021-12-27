@@ -3,7 +3,7 @@
     <style name="Theme.Bulletin" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">#3B0000</item>
-        <item name="colorPrimaryVariant">#200000</item>
+        <item name="colorPrimaryVariant">#4D0000</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>

@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/gradient_background"
     android:padding="10dp"
     tools:context=".ui.SavedNewsFragment">
@@ -18,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:fontFamily="@font/alegreya_sc"
-            android:text="SAVED"
+            android:text="@string/saved"
             android:textColor="@color/white"
             android:textSize="30sp" />
 
@@ -28,7 +27,6 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
-            android:layout_marginStart="10dp"
             android:background="@drawable/curved_button"
             android:clickable="true"
             android:focusable="true"
@@ -40,9 +38,11 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/ic_baseline_delete_24"
-            android:backgroundTint="@color/white" />
+            android:background="@drawable/curved_button"
+            android:clickable="true"
+            android:layout_marginEnd="4dp"
+            android:focusable="true"
+            android:src="@drawable/ic_baseline_delete_24" />
 
     </RelativeLayout>
 
@@ -121,7 +121,7 @@
             android:layout_gravity="center_horizontal"
             android:background="@drawable/custom_button"
             android:textColor="@color/white"
-            android:text="Explore News"
+            android:text="@string/explore_news"
             android:fontFamily="@font/ewert"
             android:textSize="24sp"
             android:layout_width="wrap_content"

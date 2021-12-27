@@ -105,9 +105,19 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/ewert"
-                    android:text="Top - News"
+                    android:text="@string/top_news"
                     android:textColor="@color/white"
                     android:textSize="22sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/CategoryOfNews"
+                    android:layout_toEndOf="@+id/TopicTextView"
+                    android:layout_below="@+id/BreakingNewsTopicRecyclerView"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="5dp"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 

@@ -6,4 +6,8 @@
     <string name="skip">Skip</string>
     <string name="finish">finish</string>
     <string name="search">Search -</string>
+    <string name="saved">SAVED</string>
+    <string name="explore_news">Explore News</string>
+    <string name="top_news">Top - News</string>
+    <string name="read_full_article">Read Full Article</string>
 </resources>

@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
@@ -34,6 +35,11 @@ class SavedArticle : Fragment() {
         val view = inflater.inflate(R.layout.fragment_saved_article, container, false)
 
         val article = args.articleSaved
+
+        //get out of fragment
+        view.findViewById<ImageButton>(R.id.BackToSavedFragment).setOnClickListener {
+            activity?.onBackPressed()
+        }
 
         //Read Article In WebView
         view.findViewById<Button>(R.id.ReadArticleOnline).setOnClickListener {

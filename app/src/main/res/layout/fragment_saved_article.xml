@@ -25,6 +25,16 @@
                 android:src="@drawable/no_image_available"
                 android:scaleType="centerCrop"/>
 
+            <ImageButton
+                android:id="@+id/BackToSavedFragment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/curved_button"
+                android:clickable="true"
+                android:focusable="true"
+                android:src="@drawable/ic_baseline_chevron_left_24" />
+
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -153,7 +163,7 @@
                     android:id="@+id/ReadArticleOnline"
                     android:layout_gravity="bottom"
                     android:layout_margin="10dp"
-                    android:text="Read Full Article"
+                    android:text="@string/read_full_article"
                     android:textSize="20sp"
                     android:background="@drawable/curved_button"
                     android:fontFamily="@font/belgrano"
